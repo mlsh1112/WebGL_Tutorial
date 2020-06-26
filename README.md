@@ -198,6 +198,7 @@ function rotaY(out, rad) {
               
 
 mMatrix를 cube가 translation할 수 있도록 수정한다.
+
     function Right(){
     mMat[0] = 1;
     mMat[1] = 0;
@@ -216,10 +217,10 @@ mMatrix를 cube가 translation할 수 있도록 수정한다.
     mMat[14] = 0;
     mMat[15] = 1;
 
-    move+=0.3;
-}
+    move+=0.3;}
 
-function Left(){
+
+    function Left(){
     move-=0.3;
     mMat[0] = 1;
     mMat[1] = 0;
