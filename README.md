@@ -74,31 +74,31 @@
                                      
         
        화면의 라디오버튼에서 S ,T 각각 다른 타입의 param을 적용할 수 있다.
-       https://git.ajou.ac.kr/mlsh1112/webgl_tutorial/-/blob/master/image%205.png
+       [image1](https://git.ajou.ac.kr/mlsh1112/webgl_tutorial/-/blob/master/image%205.png)
        
         (1) gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);
              gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
              
              cube의 u,v의 값을 보고 image를 반복한 결과이다.
-             https://git.ajou.ac.kr/mlsh1112/webgl_tutorial/-/blob/master/image%204.png
+            [image2]( https://git.ajou.ac.kr/mlsh1112/webgl_tutorial/-/blob/master/image%204.png)
              
              
         (2) gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
              gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
              
              0보다 작은 것은 0이고 1보다 큰 값은 1이라고 설정한다.
-            https://git.ajou.ac.kr/mlsh1112/webgl_tutorial/-/blob/master/image%203.png
+            [image3](https://git.ajou.ac.kr/mlsh1112/webgl_tutorial/-/blob/master/image%203.png)
              
         (3) gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.MIRRORED_REPEAT);
               gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.MIRRORED_REPEAT);
               u,v의 값을 반복하여 맵핑한다.
-              https://git.ajou.ac.kr/mlsh1112/webgl_tutorial/-/blob/master/image%202.png
+              [image4](https://git.ajou.ac.kr/mlsh1112/webgl_tutorial/-/blob/master/image%202.png)
               
         
         (4) 가장 흥미로웠던 image
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.MIRRORED_REPEAT);
-             gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-             https://git.ajou.ac.kr/mlsh1112/webgl_tutorial/-/blob/master/image.png
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+             [image5](https://git.ajou.ac.kr/mlsh1112/webgl_tutorial/-/blob/master/image.png)
               
               
 **Texture mapping을 자세히 관찰하기 위해 구현한 기능들**
