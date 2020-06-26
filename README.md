@@ -74,31 +74,31 @@
                                      
         
        화면의 라디오버튼에서 S ,T 각각 다른 타입의 param을 적용할 수 있다.
-       ![image](/uploads/6f3c1aa3a16e55bc391a99e4d60b8dfc/image.png)
+       https://git.ajou.ac.kr/mlsh1112/webgl_tutorial/-/blob/master/image%205.png
        
         (1) gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);
              gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
              
              cube의 u,v의 값을 보고 image를 반복한 결과이다.
-             ![image](/uploads/414827f0e35888242eba66957cb838ec/image.png)
+             https://git.ajou.ac.kr/mlsh1112/webgl_tutorial/-/blob/master/image%204.png
              
              
         (2) gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
              gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
              
              0보다 작은 것은 0이고 1보다 큰 값은 1이라고 설정한다.
-             ![image](/uploads/b9b48719320c7d708a630f0fcdcbd3f4/image.png)
+            https://git.ajou.ac.kr/mlsh1112/webgl_tutorial/-/blob/master/image%203.png
              
         (3) gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.MIRRORED_REPEAT);
               gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.MIRRORED_REPEAT);
               u,v의 값을 반복하여 맵핑한다.
-              <img src="/uploads/9b522bec402c1d0bb1bd0e27b7581f2e/image_2.png">
+              https://git.ajou.ac.kr/mlsh1112/webgl_tutorial/-/blob/master/image%202.png
               
         
         (4) 가장 흥미로웠던 image
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.MIRRORED_REPEAT);
              gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-              ![image](/uploads/6842e68218834f4338fad7532e2789bd/image.png)
+             https://git.ajou.ac.kr/mlsh1112/webgl_tutorial/-/blob/master/image.png
               
               
 **Texture mapping을 자세히 관찰하기 위해 구현한 기능들**
