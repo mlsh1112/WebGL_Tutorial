@@ -2,16 +2,16 @@
 **WebGL API for texture**
 >  소프트웨어학과 201723274 이서현
 
-*  Texture Mapping vs Geometric Modeling
+#   Texture Mapping vs Geometric Modeling
 
-    Geometric modeling은 각각의 vertex에 color value를 할당한다. 하지만 texture mapping에 비해서는 현실감이 떨어진다.
-    Texture mapping은 표면에 image를 두르는 것으로 적은 비용으로 현실감있게 표현이 가능하다.
+   Geometric modeling은 각각의 vertex에 color value를 할당한다. 하지만 texture mapping에 비해서는 현실감이 떨어진다.
+   Texture mapping은 표면에 image를 두르는 것으로 적은 비용으로 현실감있게 표현이 가능하다.
     
     
     
-*  Texture mapping 이용하기
+#   Texture mapping 이용하기
 
-   1.load image
+   ## 1.load image
    
         var image = new Image();
         image.src = "s.png";
@@ -22,7 +22,7 @@
                 gl.generateMipmap(gl.TEXTURE_2D);
                 });
     
-    2.fragment shader에 text coordinate를 정의한다.
+   ## 2.fragment shader에 text coordinate를 정의한다.
     
     
         var fragmentShaderSource = '\
@@ -34,7 +34,7 @@
 				gl_FragColor = 0.3 * color + 0.7 * texture2D(sampler2d,texCoord);\
 			}';
 
-    3.vertex shader에는 text coordinate인 u,v를 선언한다.
+   ## 3.vertex shader에는 text coordinate인 u,v를 선언한다.
     
         var vertexShaderSource = '\
 			attribute highp vec4 myVertex; \
@@ -54,13 +54,13 @@
                 texCoord = myUV*3.0; \
         	}';
 
-    4.bind texture
+   ## 4.bind texture
      
          gl.bindAttribLocation(gl.programObject, 2, "myUV");
  
-    5.Texture filtering and mipmapping
+   ## 5.Texture filtering and mipmapping
     
-     glTexParameter{i,v}(GLenum target, GLenum pname, GL{type}param) 을 이용한다.
+   glTexParameter{i,v}(GLenum target, GLenum pname, GL{type}param) 을 이용한다.
         
         target - GL_TEXTURE_2D, GL_TEXTURE_CUBE_MAP
         pname & params
@@ -73,35 +73,48 @@
                                      
                                      
         
-      화면의 라디오버튼에서 S ,T 각각 다른 타입의 param을 적용할 수 있다.
-      [image1](https://git.ajou.ac.kr/mlsh1112/webgl_tutorial/-/blob/master/image%205.png)
+   화면의 라디오버튼에서 S ,T 각각 다른 타입의 param을 적용할 수 있다.<br/>
+   ![image](https://user-images.githubusercontent.com/59257758/125007343-f54d4780-e09a-11eb-8c6d-23135015fb7f.png)
        
-      (1) gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);
-           gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
+   ### (1) cube의 u,v의 값을 보고 image를 반복한 결과이다.<br/>
+      
+    
+ 	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);
+  	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
              
-      cube의 u,v의 값을 보고 image를 반복한 결과이다.
-      [image2]( https://git.ajou.ac.kr/mlsh1112/webgl_tutorial/-/blob/master/image%204.png)
+   
+   ![image 2](https://user-images.githubusercontent.com/59257758/125007578-7c9abb00-e09b-11eb-9719-ab6ca9445797.png)
+
              
              
-      (2) gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-           gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+   ### (2) 0보다 작은 것은 0이고 1보다 큰 값은 1이라고 설정한다.<br/>
+   
+  	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
              
-      0보다 작은 것은 0이고 1보다 큰 값은 1이라고 설정한다.
-      [image3](https://git.ajou.ac.kr/mlsh1112/webgl_tutorial/-/blob/master/image%203.png)
+  
+   ![image 3](https://user-images.githubusercontent.com/59257758/125007638-a522b500-e09b-11eb-836b-bf4fc7fdfa0c.png)
+
              
-      (3) gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.MIRRORED_REPEAT);
-            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.MIRRORED_REPEAT);
-            u,v의 값을 반복하여 맵핑한다.
-            [image4](https://git.ajou.ac.kr/mlsh1112/webgl_tutorial/-/blob/master/image%202.png)
+   ### (3) u,v의 값을 반복하여 맵핑한다.<br/>
+   
+  	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.MIRRORED_REPEAT);
+  	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.MIRRORED_REPEAT);
+            
+  
+   ![image 4](https://user-images.githubusercontent.com/59257758/125007721-d3a09000-e09b-11eb-8bca-8502a1373fd8.png)
+
               
         
-      (4) 가장 흥미로웠던 image
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.MIRRORED_REPEAT);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-       [image5](https://git.ajou.ac.kr/mlsh1112/webgl_tutorial/-/blob/master/image.png)
+  ### (4) 가장 흥미로웠던 image
+      
+ 	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.MIRRORED_REPEAT);
+  	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+![image 5](https://user-images.githubusercontent.com/59257758/125007756-f03cc800-e09b-11eb-94b0-f0bd4e9f10f1.png)
+
               
               
-**Texture mapping을 자세히 관찰하기 위해 구현한 기능들**
+# Texture mapping을 자세히 관찰하기 위해 구현한 기능들
 
    1.  Mouse drag interface 
     
