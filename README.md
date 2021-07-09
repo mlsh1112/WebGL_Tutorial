@@ -113,10 +113,10 @@
 ![image 5](https://user-images.githubusercontent.com/59257758/125007756-f03cc800-e09b-11eb-94b0-f0bd4e9f10f1.png)
 
               
-              
+       
 # Texture mapping을 자세히 관찰하기 위해 구현한 기능들
 
-   1.  Mouse drag interface 
+   ## 1.  Mouse drag interface 
     
 
     마우스의 움직임에 따라 큐브를 회전할 수 있다.
@@ -163,7 +163,7 @@
 	canvas.addEventListener("mousedown", doMouseDown, false);
 
 
-   2.  Rotation
+  ## 2.  Rotation
 
 [1,1,0]인 축을 중심으로 큐브를 회전시킨다.
 var EPSILON = 0.000001;
@@ -207,7 +207,7 @@ function rotaY(out, rad) {
 
 
 
-   3.  Translation
+ ##  3.  Translation
               
 
 mMatrix를 cube가 translation할 수 있도록 수정한다.
